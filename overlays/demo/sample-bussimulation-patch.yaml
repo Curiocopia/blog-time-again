@@ -1,0 +1,6 @@
+apiVersion: demo.sync/v1alpha1
+kind: BusSimulation
+metadata:
+  name: passenger-demo
+spec:
+  busCount: 36
