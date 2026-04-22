@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+metadata:
+  name: bus-simulation
+
+namespace: demo
+
+images:
+- name: YOUR_REGISTRY/bus-passenger-controller
+  newName: my-registry/bus-passenger-controller
+  newTag: latest
+- name: YOUR_REGISTRY/bus-passenger-ui
+  newName: my-registry/bus-passenger-ui
+  newTag: latest
+
+resources:
+- ../../base
+
+patches:
+- path: sample-bussimulation-patch.yaml
+  target:
+    kind: BusSimulation
+    name: passenger-demo

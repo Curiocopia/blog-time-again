@@ -1,0 +1,13 @@
+apiVersion: demo.sync/v1alpha1
+kind: BusSimulation
+metadata:
+  name: passenger-demo
+spec:
+  busCount: 18
+  stationCount: 12
+  epochDurationMinutes: 1
+  arrivalRatePerMinute: 0.5
+  boardingMinutesPerPassenger: 0.2
+  speedPerMinute: 0.4
+  paused: true
+  resetNonce: 0

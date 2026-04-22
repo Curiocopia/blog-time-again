@@ -1,0 +1,67 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: bussimulations.demo.sync
+spec:
+  group: demo.sync
+  scope: Namespaced
+  names:
+    plural: bussimulations
+    singular: bussimulation
+    kind: BusSimulation
+    shortNames:
+      - bussim
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      subresources:
+        status: {}
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              required:
+                - busCount
+                - stationCount
+                - epochDurationMinutes
+                - arrivalRatePerMinute
+                - boardingMinutesPerPassenger
+                - speedPerMinute
+                - paused
+                - resetNonce
+              properties:
+                busCount:
+                  type: integer
+                  minimum: 2
+                  maximum: 120
+                stationCount:
+                  type: integer
+                  minimum: 2
+                  maximum: 60
+                epochDurationMinutes:
+                  type: number
+                  minimum: 0
+                  exclusiveMinimum: true
+                arrivalRatePerMinute:
+                  type: number
+                  minimum: 0
+                  exclusiveMinimum: true
+                boardingMinutesPerPassenger:
+                  type: number
+                  minimum: 0
+                  exclusiveMinimum: true
+                speedPerMinute:
+                  type: number
+                  minimum: 0
+                  exclusiveMinimum: true
+                paused:
+                  type: boolean
+                resetNonce:
+                  type: integer
+                  minimum: 0
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true

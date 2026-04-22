@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bus-passenger-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bus-passenger-ui
+  template:
+    metadata:
+      labels:
+        app: bus-passenger-ui
+    spec:
+      serviceAccountName: bus-passenger-ui
+      containers:
+        - name: ui
+          image: YOUR_REGISTRY/bus-passenger-ui:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: SIMULATION_NAME
+              value: passenger-demo

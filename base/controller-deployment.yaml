@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bus-passenger-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bus-passenger-controller
+  template:
+    metadata:
+      labels:
+        app: bus-passenger-controller
+    spec:
+      serviceAccountName: bus-passenger-controller
+      containers:
+        - name: controller
+          image: YOUR_REGISTRY/bus-passenger-controller:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: SIMULATION_NAME
+              value: passenger-demo
+            - name: RESYNC_SECONDS
+              value: "1.0"
