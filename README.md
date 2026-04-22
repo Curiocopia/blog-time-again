@@ -45,7 +45,7 @@ mkdir -p $CRDS
 
 CONTENT="https://raw.githubusercontent.com/Curiocopia/blog-time-again/refs/heads/main"
 
-curl -s -o "$CRD/#1" "$CONTENT/crds\
+curl -s -o "$CRDS/#1" "$CONTENT/crds\
 /{crd.yaml}"
 ```
 
