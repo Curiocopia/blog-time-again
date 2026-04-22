@@ -80,17 +80,17 @@ tree $TEST_HOME
 ```
 Expect something like:
 ```bash
-/tmp/tmp.00sZsfiC3c
+/tmp/tmp.agKI6nqMh8
+├── base
+│   ├── controller-deployment.yaml
+│   ├── kustomization.yaml
+│   ├── rbac.yaml
+│   ├── sample-bussimulation.yaml
+│   ├── serviceaccount.yaml
+│   ├── ui-deployment.yaml
+│   └── ui-service.yaml
 └── crds
     └── crd.yaml
-└── base
-    ├── controller-deployment.yaml
-    ├── kustomization.yaml
-    ├── rbac.yaml
-    ├── sample-bussimulation.yaml
-    ├── serviceaccount.yaml
-    ├── ui-deployment.yaml
-    └── ui-service.yaml
 ```
 ### The Base Customization
 
